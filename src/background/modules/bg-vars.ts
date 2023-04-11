@@ -1,22 +1,22 @@
 import { reConfigCollectionType } from '../../options/options-utils';
 
 export {
-	BackupKey,
-	bookIds,
-	Config,
-	ConfigType,
-	DefaultBackupName,
-	DefaultRegexPattern,
-	isCopyContent,
-	mpTempData,
-	StorageErrorMsg,
+    BackupKey,
+    bookIds,
+    Config,
+    ConfigType,
+    DefaultBackupName,
+    DefaultRegexPattern,
+    isCopyContent,
+    mpTempData,
+    StorageErrorMsg,
 };
 
 // 给 window 添加全局变量
 declare global {
-	interface Window {
-		bookId: string | undefined
-	}
+    interface Window {
+        bookId: string | undefined
+    }
 }
 
 /* 声明全局变量 */
@@ -29,28 +29,28 @@ const StorageErrorMsg = "存储出错";
 const BackupKey = "backup";
 //用于记录 popup 是否请求复制目录
 var isCopyContent = false;
-const DefaultRegexPattern = {replacePattern: '', checked: false};
-var mpTempData: {[bookId: string]: any[]} = {};
+const DefaultRegexPattern = { replacePattern: '', checked: false };
+var mpTempData: { [bookId: string]: any[] } = {};
 
 // "想法所对应文本被标注时保留"选项
-export enum ThoughtTextOptions{
-	JustThought = "thoughtTextThought",
-	All = "thoughtTextAll",
-	JustMark = "thoughtTextMark"
+export enum ThoughtTextOptions {
+    JustThought = "thoughtTextThought",
+    All = "thoughtTextAll",
+    JustMark = "thoughtTextMark"
 }
 
 // "选中后动作"选项
-export enum SelectActionOptions{
-	None = "underlineNone",
-	Copy = "copy",
-	Bg = "underlineBg",
-	Straight = "underlineStraight",
-	HandWrite = "underlineHandWrite"
+export enum SelectActionOptions {
+    None = "underlineNone",
+    Copy = "copy",
+    Bg = "underlineBg",
+    Straight = "underlineStraight",
+    HandWrite = "underlineHandWrite"
 }
 
 //用于检查格式并保存当前配置
-interface ConfigType{
-	s1Pre: string,
+interface ConfigType {
+    s1Pre: string,
     s1Suf: string,
     s2Pre: string,
     s2Suf: string,
@@ -74,20 +74,20 @@ interface ConfigType{
     mpAutoLoad: boolean,
     allTitles: boolean,
     addThoughts: boolean,
-	thoughtFirst: boolean,
+    thoughtFirst: boolean,
     enableDevelop: boolean,
     enableStatistics: boolean,
     enableOption: boolean,
-	enableCopyImgs: boolean,
+    enableCopyImgs: boolean,
     enableFancybox: boolean,
-	enableThoughtEsc: boolean,
+    enableThoughtEsc: boolean,
     backupName: string,
     selectAction: string,
     thoughtTextOptions: string,
     //如果不设置默认值，则在设置页初始化时需要考虑到 
     re: reConfigCollectionType,
     flag: 0,
-	[key: string]: any
+    [key: string]: any
 }
 
 var Config: ConfigType = {
@@ -103,9 +103,9 @@ var Config: ConfigType = {
     lev2Suf: "",
     lev3Pre: "#### ",
     lev3Suf: "",
-    thouPre: "==",
-    thouSuf: "==",
-    thouMarkPre: "> ",
+    thouPre: "",
+    thouSuf: "",
+    thouMarkPre: "",
     thouMarkSuf: "",
     codePre: "```",
     codeSuf: "```",
@@ -115,17 +115,17 @@ var Config: ConfigType = {
     mpAutoLoad: true,
     allTitles: false,
     addThoughts: true,
-	thoughtFirst: false,
+    thoughtFirst: true,
     enableDevelop: false,
     enableStatistics: false,
     enableOption: true,
-	enableCopyImgs: true,
+    enableCopyImgs: true,
     enableFancybox: true,
-	enableThoughtEsc: true,
+    enableThoughtEsc: true,
     backupName: DefaultBackupName,
     selectAction: SelectActionOptions.None,
-	thoughtTextOptions: ThoughtTextOptions.JustThought,
+    thoughtTextOptions: ThoughtTextOptions.JustThought,
     //如果不设置默认值，则在设置页初始化时需要考虑到 
-    re: {re1:DefaultRegexPattern,re2:DefaultRegexPattern,re3:DefaultRegexPattern,re4:DefaultRegexPattern,re5:DefaultRegexPattern},
+    re: { re1: DefaultRegexPattern, re2: DefaultRegexPattern, re3: DefaultRegexPattern, re4: DefaultRegexPattern, re5: DefaultRegexPattern },
     flag: 0
 }

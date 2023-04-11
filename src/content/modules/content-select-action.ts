@@ -29,14 +29,20 @@ function initSelectAction() {
 		for (let mutation of mutationsList) {
 			if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
 				let container = $('.reader_toolbar_container');
-				//如果选中了文字
-				if (container.length && container.css('display') == 'block' && $('.wr_selection')[0]) {
-					// 结束监听以防止监听面板消失时触发自动标注
-					observer.disconnect();
-					// 点击目标，并在回调函数中重新监听
-					clickTarget(observeToolbar);
-
+				// 标注面板出现
+				if (container.length && container.css('display') == 'block') {
+					// 加上渐构工具
 					addModevolTags()
+
+					//如果选中了文字
+					if ($('.wr_selection')[0]) {
+						// 结束监听以防止监听面板消失时触发自动标注
+						observer.disconnect();
+						// 点击目标，并在回调函数中重新监听
+						clickTarget(observeToolbar);
+					}
+
+
 
 				}
 			}
@@ -63,6 +69,7 @@ function initSelectAction() {
 		 * 使用该函数设置对 .reader_toolbar_container 的父元素（.renderTargetContainer）进行监听。
 		 */
 		let observeParent = function () {
+
 			const p = '.renderTargetContainer';
 			const listenFor = '.reader_toolbar_container';
 			if ($(listenFor).length) return; // 已经存在则不调用
