@@ -10,4 +10,4 @@ function initKeyBind() {
 	initCtrlKey();
 }
 
-export {initKeyBind};
+export { initKeyBind };

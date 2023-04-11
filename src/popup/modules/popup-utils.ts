@@ -8,14 +8,13 @@ const bg: PopupApi = chrome.extension.getBackgroundPage()!.popupApi;
 const readPageRegexp = /:\/\/weread\.qq\.com\/web\/reader\/[^\s]*/;
 
 // 下拉按钮点击事件
-const dropdownClickEvent = function(this: HTMLElement){
+const dropdownClickEvent = function (this: HTMLElement) {
 	$(this).toggleClass("active");
 	$(this).next().toggle();
 }
 
 // https://www.geeksforgeeks.org/sort-the-array-in-a-given-index-range/
-function partSort(arr: Array<any>, a: number, b: number, fun = function(a: any, b: any){return a - b})
-{
+function partSort(arr: Array<any>, a: number, b: number, fun = function (a: any, b: any) { return a - b }) {
 	// Variables to store start and end of the index range
 	let l = Math.min(a, b);
 	let r = Math.max(a, b);

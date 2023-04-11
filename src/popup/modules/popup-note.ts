@@ -10,9 +10,9 @@ import {
 /* 初始化笔记面板，为各个按钮绑定点击事件 */
 async function initNoteTab(url: string) {
 	// 在读书页时才显示笔记
-	if(!readPageRegexp.test(url)) return;
+	if (!readPageRegexp.test(url)) return;
 	let bookId = await bg.setBookId();
-	if(!bookId) return window.close();
+	if (!bookId) return window.close();
 	const userVid = await bg.getUserVid();
 	console.log('bookId', bookId);
 	console.log('userVid', userVid);
@@ -26,9 +26,9 @@ async function initNoteTab(url: string) {
 	// 下拉按钮点击事件
 	$('.vertical-menu[data-for="noteBtn"] .dropdown-btn').on('click', dropdownClickEvent);
 	// 点击调用该函数
-	function listener(event: JQuery.ClickEvent){
+	function listener(event: JQuery.ClickEvent) {
 		let targetEl = event.target;
-		switch(targetEl.id){
+		switch (targetEl.id) {
 			case "getTextComment":
 				bg.copyComment(userVid, false)
 				break;
@@ -54,10 +54,10 @@ async function initNoteTab(url: string) {
 				bg.copyThought(true)
 				break;
 			case "removeMarksInCurChap":
-				bg.sendMessageToContentScript({message:{deleteBookmarks:true, isAll: false}});
+				bg.sendMessageToContentScript({ message: { deleteBookmarks: true, isAll: false } });
 				break;
 			case "removeAllMarks":
-				bg.sendMessageToContentScript({message:{deleteBookmarks:true, isAll: true}});
+				bg.sendMessageToContentScript({ message: { deleteBookmarks: true, isAll: true } });
 				break;
 			default:
 				break;

@@ -5,15 +5,15 @@ import { DropDownCaller } from './popup-dropdown-caller';
 import { DropDownContainer } from './popup-dropdown-container';
 import { TabContent } from './popup-tab-content';
 
-interface IProps{
-	
+interface IProps {
+
 }
 
 /**
  * 笔记功能的内容
  */
 export class NoteTabContent extends React.Component<IProps>{
-	render(){
+	render() {
 		const P = this.props;
 		return (
 			<TabContent for='noteBtn' >

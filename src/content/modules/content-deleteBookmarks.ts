@@ -6,10 +6,10 @@ import Swal, { SweetAlertResult } from "sweetalert2";
  */
 function initDeleteMarksNotification() {
 	console.log('initDeleteMarksNotification');
-	chrome.runtime.onMessage.addListener((msg)=>{
-		if(!msg.deleteBookmarks) return;
+	chrome.runtime.onMessage.addListener((msg) => {
+		if (!msg.deleteBookmarks) return;
 		let insertText = '本章';
-		if(msg.isAll) insertText = '全书';
+		if (msg.isAll) insertText = '全书';
 		// 显示通知
 		Swal.fire({
 			icon: 'warning',
@@ -17,7 +17,7 @@ function initDeleteMarksNotification() {
 			showCancelButton: true,
 			confirmButtonText: '是',
 			cancelButtonText: '不了'
-		}).then((confirm: SweetAlertResult<unknown>)=>{
+		}).then((confirm: SweetAlertResult<unknown>) => {
 			// 发送确认消息给背景页
 			chrome.runtime.sendMessage({
 				type: 'deleteBookmarks',
@@ -28,4 +28,4 @@ function initDeleteMarksNotification() {
 	});
 }
 
-export {initDeleteMarksNotification};
+export { initDeleteMarksNotification };

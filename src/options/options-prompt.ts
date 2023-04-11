@@ -2,7 +2,7 @@ import $ from "jquery";
 /* prompt 弹窗初始化 */
 function initPrompt() {
 	// prompt 取消
-	$("#promptCancelButton")[0].onclick = function(){
+	$("#promptCancelButton")[0].onclick = function () {
 		$("#promptInput").val('').attr('placeholder', '')
 		$("#promptContainer").css('display', 'none')
 	}
@@ -21,4 +21,4 @@ function initPrompt() {
 	};
 }
 
-export {initPrompt};
+export { initPrompt };

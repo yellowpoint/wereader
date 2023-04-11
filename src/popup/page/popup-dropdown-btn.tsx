@@ -1,14 +1,14 @@
 import React, { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 
-interface IProps{
+interface IProps {
 	value: string
 }
 
 declare global {
 	namespace JSX {
-	  interface IntrinsicElements {
-		button: DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
-	  }
+		interface IntrinsicElements {
+			button: DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
+		}
 	}
 }
 
@@ -16,7 +16,7 @@ declare global {
  * 下拉按钮
  */
 export class DropDownBtn extends React.Component<IProps>{
-	render(){
+	render() {
 		const P = this.props;
 		return (
 			<button className="dropdown-btn">{this.props.value}</button>

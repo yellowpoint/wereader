@@ -7,7 +7,7 @@ import { TabBtnContainer } from './popup-tab-btn-container';
 import { TabContent } from './popup-tab-content';
 import { NoteTabContent } from './popup-tab-content-note';
 
-interface IProps{
+interface IProps {
 
 }
 
@@ -20,7 +20,7 @@ export const Popup: FC<IProps> = () => {
 			<TabBtnContainer>
 				<TabBtn id='shelfBtn' value='书架'></TabBtn>
 			</TabBtnContainer>
-			<NoteTabContent/>
+			<NoteTabContent />
 			<TabContent for='shelfBtn' id='shelf'>
 				<a>...</a>
 			</TabContent>
@@ -28,4 +28,4 @@ export const Popup: FC<IProps> = () => {
 	);
 }
 
-createRoot(document.getElementById('popup-container')!).render(<Popup/>);
+createRoot(document.getElementById('popup-container')!).render(<Popup />);

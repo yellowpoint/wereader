@@ -9,7 +9,7 @@ import {
 	getText,
 } from './bg-utils';
 
-export class Wereader{
+export class Wereader {
 	static readonly indexUrl = `https://i.weread.qq.com`;
 	static readonly maiUrl: string = `https://weread.qq.com`;
 	private chapInfosUrl: string;
@@ -23,7 +23,7 @@ export class Wereader{
 	private shelfRemoveBookUrl: string;
 	private shelfBookSecret: string;
 
-	constructor(bookId?: string, userVid?: string){
+	constructor(bookId?: string, userVid?: string) {
 		this.chapInfosUrl = `${Wereader.indexUrl}/book/chapterInfos?bookIds=${bookId}&synckeys=0`;
 		this.bookmarksUrl = `${Wereader.indexUrl}/book/bookmarklist?bookId=${bookId}`;
 		this.bestBookmarksUrl = `${Wereader.indexUrl}/book/bestbookmarks?bookId=${bookId}`;
@@ -36,47 +36,47 @@ export class Wereader{
 		this.shelfBookSecret = `${Wereader.indexUrl}/book/secret`;
 	}
 
-	async getBookmarks(): Promise<MarksJson>{
+	async getBookmarks(): Promise<MarksJson> {
 		const data = await getJson(this.bookmarksUrl);
 		console.log(data);
 		return data;
 	}
 
-	async getChapInfos(): Promise<ChapInfoJson>{
+	async getChapInfos(): Promise<ChapInfoJson> {
 		const data = await getJson(this.chapInfosUrl);
 		console.log(data);
 		return data;
 	}
 
-	async getBestBookmarks(): Promise<BestMarksJson>{
+	async getBestBookmarks(): Promise<BestMarksJson> {
 		const data = await getJson(this.bestBookmarksUrl);
 		console.log(data);
 		return data;
 	}
 
-	async getThoughts(): Promise<ThoughtJson>{
+	async getThoughts(): Promise<ThoughtJson> {
 		const data = await getJson(this.thoughtsUrl);
 		console.log(data);
 		return data;
 	}
 
-	async getComments(): Promise<CommentsJson>{
+	async getComments(): Promise<CommentsJson> {
 		const data = await getJson(this.commentsUrl);
 		console.log(data);
 		return data;
 	}
 
-	async getShelfData(): Promise<ShelfDataTypeJson>{
+	async getShelfData(): Promise<ShelfDataTypeJson> {
 		const data = await getJson(this.shelfDataUrl);
 		console.log(data);
 		return data;
 	}
 
-	async removeBookmarkById(bookmarkId: string){
+	async removeBookmarkById(bookmarkId: string) {
 		const resp = await fetch(this.removeBookmarkUrl, {
 			method: 'POST',
-			body: JSON.stringify({bookmarkId: bookmarkId}),
-			headers: {'Content-Type': 'application/json'},
+			body: JSON.stringify({ bookmarkId: bookmarkId }),
+			headers: { 'Content-Type': 'application/json' },
 			credentials: "include",
 			cache: 'no-cache'
 		});
@@ -85,26 +85,26 @@ export class Wereader{
 		return json;
 	}
 
-	async removeBookmarks(chapterUid?: number){
+	async removeBookmarks(chapterUid?: number) {
 		const data = await this.getBookmarks();
 		let bookmarks, succ = 0, fail = 0;
-		if(chapterUid === undefined){
+		if (chapterUid === undefined) {
 			bookmarks = data.updated;
-		}else{
-			bookmarks = data.updated.filter((mark)=>{return mark.chapterUid == chapterUid;});
+		} else {
+			bookmarks = data.updated.filter((mark) => { return mark.chapterUid == chapterUid; });
 		}
 		for (const mark of bookmarks) {
-			let respJson = {succ: -1};
+			let respJson = { succ: -1 };
 			try {
 				respJson = await this.removeBookmarkById(mark.bookmarkId);
 			} catch (error) {
 				fail++;
 				continue;
 			}
-			if(!respJson.succ) fail++;
+			if (!respJson.succ) fail++;
 			else succ++;
 		}
-		return {succ: succ, fail: fail}
+		return { succ: succ, fail: fail }
 	}
 
 	/**
@@ -113,29 +113,29 @@ export class Wereader{
 	 * type=1：获取月数据
 	 * type=0：获取周数据
 	 */
-	async getReadDetail(type=1, count=3, monthTimestamp?: number){
+	async getReadDetail(type = 1, count = 3, monthTimestamp?: number) {
 		let url = this.readDetailUrl;
-		if(monthTimestamp) url = `${url}&baseTimestamp=${monthTimestamp}`;
-		if(count) url = `${url}&count=${count}`;
-		if([0,1].indexOf(type)>-1) url = `${url}&type=${type}`;
+		if (monthTimestamp) url = `${url}&baseTimestamp=${monthTimestamp}`;
+		if (count) url = `${url}&count=${count}`;
+		if ([0, 1].indexOf(type) > -1) url = `${url}&type=${type}`;
 		const respJson = await getJson(url);
 		console.log(respJson);
 		return respJson;
 	}
 
-	async isLogined(){
+	async isLogined() {
 		let text = await getText(Wereader.maiUrl);
-		if(text && text.indexOf('wr_avatar_img')>-1) return true;
+		if (text && text.indexOf('wr_avatar_img') > -1) return true;
 		else return false;
 	}
 
 	async shelfRemoveBook(bookIds: string[]) {
-		let payload = {bookIds: bookIds, private: 1}
+		let payload = { bookIds: bookIds, private: 1 }
 		let resp = await fetch(this.shelfRemoveBookUrl, {
 			method: 'POST',
 			body: JSON.stringify(payload),
 			headers: {
-			'Content-Type': 'application/json',
+				'Content-Type': 'application/json',
 			}
 		});
 		console.log('resp', resp);
@@ -143,12 +143,12 @@ export class Wereader{
 	}
 
 	async shelfMakeBookPrivate(bookIds: string[]) {
-		let payload = {bookIds: bookIds, private: 1};
+		let payload = { bookIds: bookIds, private: 1 };
 		let resp = await fetch(this.shelfBookSecret, {
 			method: 'POST',
 			body: JSON.stringify(payload),
 			headers: {
-			'Content-Type': 'application/json'
+				'Content-Type': 'application/json'
 			}
 		});
 		console.log('resp', resp);
@@ -156,12 +156,12 @@ export class Wereader{
 	}
 
 	async shelfMakeBookPublic(bookIds: string[]) {
-		let payload = {bookIds: bookIds, private: 0}
+		let payload = { bookIds: bookIds, private: 0 }
 		let resp = await fetch(`${Wereader.indexUrl}/book/secret`, {
 			method: 'POST',
 			body: JSON.stringify(payload),
 			headers: {
-			'Content-Type': 'application/json'
+				'Content-Type': 'application/json'
 			}
 		});
 		console.log('resp', resp);

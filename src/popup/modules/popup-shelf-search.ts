@@ -7,7 +7,7 @@ function createSearchInput() {
 	$('#searchBookInput').on('keyup', function () {
 		const val: string = $(this).val() as string;
 		const filter = val.toUpperCase();
-		$(".dropdown-container > a").each((index, el)=>{
+		$(".dropdown-container > a").each((index, el) => {
 			let a = $(el);
 			let text = a.text().toUpperCase();
 			if (text.indexOf(filter) > -1) {
@@ -19,4 +19,4 @@ function createSearchInput() {
 	});
 }
 
-export {createSearchInput};
+export { createSearchInput };

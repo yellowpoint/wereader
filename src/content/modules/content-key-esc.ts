@@ -9,7 +9,7 @@ function documentEscDown(event: JQuery.KeyDownEvent) {
 	if (event.keyCode == 27) {
 		if (fancybox.length) fancybox.remove();
 		if (thoughtPanel.length && thoughtPanel.css('display') !== 'none') $('.closeButton').trigger("click");
-		if (thoughtReview.length && thoughtReview.parent().css('display') !== 'none')$('body').trigger("click");
+		if (thoughtReview.length && thoughtReview.parent().css('display') !== 'none') $('body').trigger("click");
 		if (reader_toolbar.length && reader_toolbar.css('display') !== 'none') reader_toolbar.remove();
 	}
 }
@@ -20,4 +20,4 @@ function initEscKey() {
 	});
 }
 
-export {initEscKey};
+export { initEscKey };

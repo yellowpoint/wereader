@@ -1,9 +1,9 @@
 import { getReadDetail } from './bg-popup';
 import { Wereader } from './bg-wereader-api';
 
-declare global{
-	interface Window{
-		statisticsApi: {[key: string]: any}
+declare global {
+	interface Window {
+		statisticsApi: { [key: string]: any }
 	}
 }
 

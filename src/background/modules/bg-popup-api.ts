@@ -28,7 +28,7 @@ import {
 } from './bg-vars';
 import { Wereader } from './bg-wereader-api';
 
-export interface ShelfForPopupType{
+export interface ShelfForPopupType {
 	shelfData: ShelfDataTypeJson | ShelfErrorDataType
 }
 let shelfForPopup: ShelfForPopupType = { shelfData: {} };
@@ -54,8 +54,8 @@ export interface PopupApi {
 	Wereader: typeof Wereader;
 }
 
-declare global{
-	interface Window{
+declare global {
+	interface Window {
 		popupApi: PopupApi
 	}
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface IProps{
+interface IProps {
 	children: React.ReactNode
 }
 
@@ -8,7 +8,7 @@ interface IProps{
  * tab 按钮的父元素（容器）
  */
 export class TabBtnContainer extends React.Component<IProps>{
-	render(){
+	render() {
 		const P = this.props;
 		return (
 			<div className="tab">{P.children}</div>

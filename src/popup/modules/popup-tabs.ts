@@ -3,7 +3,7 @@ import $ from 'jquery';
 /**
  * 绑定 tab 按钮点击事件
  */
- function tabClickEvent(this: HTMLElement) {
+function tabClickEvent(this: HTMLElement) {
 	// 隐藏 .tabContent
 	$('.tabContent').css('display', 'none');
 	// 去除处于 active 状态的 .tabLinks 元素

@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-const helpContent: {[key: string]: any} = {
+const helpContent: { [key: string]: any } = {
     s1Pre: {
         title: '直线标注前缀',
         help: `<p>在微信读书中，标注分三类，分别是<span class="lineinline">波浪线</span>、<span class="lineinline">马克笔</span>和<span class="lineinline">直线</span>：</p>
@@ -79,7 +79,7 @@ const helpContent: {[key: string]: any} = {
         title: '导出标注包含想法',
         help: `<p>选中该选项之后，导出的标注（本章标注或是全书标注）中将包含你在书中留下的想法。</p>`
     },
-	thoughtFirst: {
+    thoughtFirst: {
         title: '想法在标注之前',
         help: `<p>选中该选项之后，导出的想法排在对应标注的前面。</p>`
     },
@@ -107,7 +107,7 @@ const helpContent: {[key: string]: any} = {
         title: '开启 fancybox',
         help: `<p>选中该选项之后，将支持读书页图片放大显示。</p>`
     },
-	enableThoughtEsc: {
+    enableThoughtEsc: {
         title: '开启想法转义\<\>',
         help: `<p>发表想法时，有时候 \< 和 \> 将会被转义，选中该选项后扩展会将这两个字符替换为全角形式，避免转义。</p>`
     },
@@ -119,7 +119,7 @@ const helpContent: {[key: string]: any} = {
         title: '开启选项',
         help: `<p>选中该选项之后，将会在 popup 中添加名为“选项”的按钮，点击该按钮可进入选项页。</p>`
     },
-	enableCopyImgs: {
+    enableCopyImgs: {
         title: '开启图片/注释/代码块导出',
         help: `<p>选中该选项之后，将会在导出本章标注时一起导出被标注的图片、注释或代码块。</p>`
     },
@@ -127,7 +127,7 @@ const helpContent: {[key: string]: any} = {
         title: '选中后动作（可按下 Ctrl 临时禁用）',
         help: `<p>在这里可设置选中文字后的动作。设置为“马克笔”则会在每次选中文字时自动点击“马克笔”以标注选中内容。设置为“复制”则在选中文字后自动复制选中内容。设置为“无”则关闭动作。</p>`
     },
-	thoughtTextOptions: {
+    thoughtTextOptions: {
         title: '想法所对应文本被标注时保留',
         help: `<p>（用直线/马克笔/波浪线）标注了某段内容，同时又在这段文本上发布了想法，则在获取随带想法的标注时该段内容会出现两次。在这里可以设置如何保留这段内容。</p>`
     },
@@ -137,33 +137,33 @@ const helpContent: {[key: string]: any} = {
     }
 }
 
-function insertHelpContent(){
-	/* 插入帮助按钮 */
+function insertHelpContent() {
+    /* 插入帮助按钮 */
     const helpIcon = `<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABIUlEQVQ4y+2TsarCMBSGvxTBRdqiUZAWOrhJB9EXcPKFfCvfQYfulUKHDqXg4CYUJSioYO4mSDX3ttzt3n87fMlHTpIjlsulxpDZbEYYhgghSNOUOI5Ny2mZYBAELBYLer0eAJ7ncTweKYri4x7LJJRS0u12n7XrukgpjSc0CpVSXK/XZ32/31FKNW85z3PW6zXT6RSAJEnIsqy5UGvNZrNhu90CcDqd+C6tT6J+v//2Th+PB2VZ1hN2Oh3G4zGTyQTbtl/YbrdjtVpxu91+Ljyfz0RRhG3bzOfzF+Y4TvNXvlwuaK2pE4tfzr/wzwsty0IIURlL0998KxRCMBqN8H2/wlzXJQxD2u12vVkeDoeUZUkURRU+GAw4HA7s9/sK+wK6CWHasQ/S/wAAAABJRU5ErkJggg==" tabindex="0"></img>`;
     for (const id in helpContent) {
         let target = $(`#${id}`);
-        if(helpContent[id].help){
+        if (helpContent[id].help) {
             target.before(`<label for='${id}' id='${id}Label'>${helpContent[id].title}<span class="help-icon">${helpIcon}</span></label>`)
             target.parent().after(`<div class='help-content' hidden=''>${helpContent[id].help}</div>`)
         }
     }
-	/* 帮助按钮点击事件 */
-	let helpIcons = document.getElementsByClassName("help-icon")
-	let helpContents = document.getElementsByClassName("help-content")
-	for (let index = 0; index < helpIcons.length; index++) {
-		let helpIcon = helpIcons[index] as HTMLElement
-		helpIcon.onclick = function(){
-			let help = helpContents[index] as HTMLElement
-			help.hidden = !help.hidden
-			return false
-		}
-	}
+    /* 帮助按钮点击事件 */
+    let helpIcons = document.getElementsByClassName("help-icon")
+    let helpContents = document.getElementsByClassName("help-content")
+    for (let index = 0; index < helpIcons.length; index++) {
+        let helpIcon = helpIcons[index] as HTMLElement
+        helpIcon.onclick = function () {
+            let help = helpContents[index] as HTMLElement
+            help.hidden = !help.hidden
+            return false
+        }
+    }
 }
 
 function initHelpContent() {
-	window.addEventListener('load', function(){
-		insertHelpContent();
-	});
+    window.addEventListener('load', function () {
+        insertHelpContent();
+    });
 }
 
 export { initHelpContent };

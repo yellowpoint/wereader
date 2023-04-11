@@ -19,8 +19,8 @@ window.pressedKeys = new Map<number, boolean>();
 function documentCtrlDown(event: JQuery.KeyDownEvent) {
 	console.log('documentCtrlDown');
 	window.pressedKeys.set(event.keyCode, true);
-	if(window.pressedKeys.get(17)) {
-		if(/wr_(myNote|underline)/.test(mouseMoveTarget.className)){
+	if (window.pressedKeys.get(17)) {
+		if (/wr_(myNote|underline)/.test(mouseMoveTarget.className)) {
 			mouseMoveTarget.style.display = 'none';
 		}
 	}
@@ -29,8 +29,8 @@ function documentCtrlDown(event: JQuery.KeyDownEvent) {
 // 按键（Ctrl）抬起事件：显示标注
 function documentCtrlUp(event: JQuery.KeyUpEvent) {
 	window.pressedKeys.set(event.keyCode, false);
-	if(event.keyCode == 17) {
-		$('.wr_underline,.wr_myNote').css('display','block');
+	if (event.keyCode == 17) {
+		$('.wr_underline,.wr_myNote').css('display', 'block');
 	}
 }
 

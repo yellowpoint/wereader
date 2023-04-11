@@ -7,21 +7,21 @@ import { initUnload } from "./options-unload";
 import { getRegexpSet } from "./options-utils";
 
 //入口
-function main(){
-	chrome.storage.sync.get(function(setting) {
+function main() {
+	chrome.storage.sync.get(function (setting) {
 		console.log("********************************************")
 		console.log("storage.sync", setting)
-		chrome.storage.local.get(function(settings){
+		chrome.storage.local.get(function (settings) {
 			console.log("storage.local", settings)
 			console.log("********************************************")
-			initialize(setting,settings);
+			initialize(setting, settings);
 			initUnload();
 		})
 	})
 }
 
 //初始化
-function initialize(setting: { [key: string]: any}, settings: { [key: string]: any}){
+function initialize(setting: { [key: string]: any }, settings: { [key: string]: any }) {
 	initExpandBtn();
 	initPrompt();
 	initConfigSelect(setting, settings);
@@ -29,4 +29,4 @@ function initialize(setting: { [key: string]: any}, settings: { [key: string]: a
 	initRegexp(setting);
 }
 
-export {main, getRegexpSet};
+export { main, getRegexpSet };

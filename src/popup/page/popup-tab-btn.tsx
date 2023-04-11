@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface IProps{
+interface IProps {
 	id: string;
 	value: string
 }
@@ -9,7 +9,7 @@ interface IProps{
  * tab 按钮
  */
 export class TabBtn extends React.Component<IProps>{
-	render(){
+	render() {
 		const P = this.props;
 		return (<button className="tabLinks" id={P.id}>{P.value}</button>)
 	}

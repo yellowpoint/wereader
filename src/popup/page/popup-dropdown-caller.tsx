@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface IProps{
+interface IProps {
 	value: string
 	id: string
 }
@@ -9,7 +9,7 @@ interface IProps{
  * 调用按钮
  */
 export class DropDownCaller extends React.Component<IProps>{
-	render(){
+	render() {
 		const P = this.props;
 		return (
 			<a id={P.id} className="caller">{P.value}</a>

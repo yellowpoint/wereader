@@ -34,4 +34,4 @@ export interface Book {
 	category?: string;
 	payType?: number;
 	price?: number;
-  }
+}

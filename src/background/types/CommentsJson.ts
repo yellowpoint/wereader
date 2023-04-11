@@ -4,8 +4,8 @@ export interface CommentsJson {
 	synckey: number;
 	totalCount: number;
 	reviews: {
-	reviewId: string;
-	review: CommentReview;
+		reviewId: string;
+		review: CommentReview;
 	}[];
 	removed: any[];
 	atUsers: any[];

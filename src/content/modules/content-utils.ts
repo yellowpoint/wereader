@@ -15,19 +15,19 @@ function simulateClick(element: HTMLElement, init = {}): void {
 
 /* 获取当前目录 */
 function getCurrentChapTitle(): string {
-    let currentChapTitle: string = '';
-    if($(".readerTopBar_title_chapter").length){
-        currentChapTitle = $(".readerTopBar_title_chapter").text();
-    }else{
-        currentChapTitle = $(".chapterItem.chapterItem_current").text();
-    }
-    currentChapTitle = currentChapTitle.replace(/^\s*|\s*$/,'');
-    return currentChapTitle;
+	let currentChapTitle: string = '';
+	if ($(".readerTopBar_title_chapter").length) {
+		currentChapTitle = $(".readerTopBar_title_chapter").text();
+	} else {
+		currentChapTitle = $(".chapterItem.chapterItem_current").text();
+	}
+	currentChapTitle = currentChapTitle.replace(/^\s*|\s*$/, '');
+	return currentChapTitle;
 }
 
 /* sleep(millisecond) */
 function sleep(ms: number) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+	return new Promise(resolve => setTimeout(resolve, ms));
 };
 
 /** sweetAlert2 弹窗通知。
@@ -35,9 +35,9 @@ function sleep(ms: number) {
  * 将在右上角弹出小方框，否则根据 msg.alertMsg 的配置来弹窗，
  * 比如 msg={title: "复制出错", text: JSON.stringify(e), confirmButtonText: '确定',icon: "error"}
  * */
-type alertMsgType = {isAlertMsg?: boolean, alertMsg: SweetAlertOptions};
+type alertMsgType = { isAlertMsg?: boolean, alertMsg: SweetAlertOptions };
 function mySweetAlert(msg: alertMsgType) {
-	if(msg.alertMsg && (msg.alertMsg.icon == 'success' || msg.alertMsg.icon == 'warning')){
+	if (msg.alertMsg && (msg.alertMsg.icon == 'success' || msg.alertMsg.icon == 'warning')) {
 		const Toast = Swal.mixin({
 			toast: true,
 			position: 'top-end',
@@ -49,7 +49,7 @@ function mySweetAlert(msg: alertMsgType) {
 			}
 		});
 		Toast.fire(msg.alertMsg);
-	}else{//其他消息
+	} else {//其他消息
 		Swal.fire(msg.alertMsg);
 	}
 }
@@ -61,9 +61,9 @@ async function copy(targetText: string): Promise<void> {
 	} catch (err) {
 		console.log('Failed to copy: ', err);
 		console.log("targetText", targetText);
-		mySweetAlert({alertMsg: {text: "复制出错", icon: 'warning'}});
+		mySweetAlert({ alertMsg: { text: "复制出错", icon: 'warning' } });
 	}
-	mySweetAlert({alertMsg: {icon: 'success', title: '复制成功'}});
+	mySweetAlert({ alertMsg: { icon: 'success', title: '复制成功' } });
 }
 
 /**
@@ -82,7 +82,7 @@ function loadCSS(file: string, elementId?: string | undefined) {
 	const extId = filePath.match(/(?<=\/\/)([^\/]*)/)![0]!;
 	link.classList.add(extId);
 	// 如果 id 存在，直接移除原元素
-	if(elementId) unloadCSS(elementId)
+	if (elementId) unloadCSS(elementId)
 	// 如果传入了 elementId，则将其设置为元素 id
 	if (elementId) link.id = elementId;
 	document.getElementsByTagName("head")[0].appendChild(link);

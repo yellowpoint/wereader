@@ -2,7 +2,7 @@ import $ from "jquery";
 /* 全部展开 */
 function initExpandBtn() {
 	let expandAllButton = $("#expandAllButton")
-	expandAllButton.on('click', function(){
+	expandAllButton.on('click', function () {
 		if (expandAllButton.attr('class')) {
 			expandAllButton.removeClass();
 		} else {
@@ -14,4 +14,4 @@ function initExpandBtn() {
 	})
 }
 
-export {initExpandBtn};
+export { initExpandBtn };

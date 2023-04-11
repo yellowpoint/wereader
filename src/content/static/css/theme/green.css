@@ -1,5 +1,7 @@
 /*正文外*/
-body{ background: #BEE5C5 !important; }
+body {
+  background: #bee5c5 !important;
+}
 
 .app_content, /*正文*/
 .wr_decoration.wr_readerBackground_opacity, /* 处理某些只包含 canvas 的页面上背景色不生效的问题 */
@@ -9,20 +11,25 @@ body{ background: #BEE5C5 !important; }
 .readerControls_fontSize, /*字体大小按钮*/
 .fontSizeButton_bg, /*字号选择展开后的背景*/
 .download_dialog_content, /*下载 APP 二维码*/
-.readerNotePanel /*标注*/
-{
-    background: #C7EDCC !important;
+.readerNotePanel /*标注*/ {
+  background: #c7edcc !important;
 }
 /*下一章*/
-.readerFooter_button{
-    background: #b6d8ba !important;
+.readerFooter_button {
+  background: #b6d8ba !important;
 }
 /*搜索*/
-.readerCatalog_searchBar_left{
-    background: #BCE4C3 !important;
+.readerCatalog_searchBar_left {
+  background: #bce4c3 !important;
 }
 /* 读书信息“更多” */
-.wr_whiteTheme .bookReviewList_item .content_Normal.hasMore:after, .wr_whiteTheme .reader_topReview_item .content_Normal.hasMore:after,
-.wr_whiteTheme .bookInfo_intro.hasMore:after{
-	background: linear-gradient(90deg, rgba(31, 32, 34, 0), rgb(190 229 197) 50%, rgb(190 229 197)) !important;
+.wr_whiteTheme .bookReviewList_item .content_Normal.hasMore:after,
+.wr_whiteTheme .reader_topReview_item .content_Normal.hasMore:after,
+.wr_whiteTheme .bookInfo_intro.hasMore:after {
+  background: linear-gradient(
+    90deg,
+    rgba(31, 32, 34, 0),
+    rgb(190 229 197) 50%,
+    rgb(190 229 197)
+  ) !important;
 }

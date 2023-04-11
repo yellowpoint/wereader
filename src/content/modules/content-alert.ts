@@ -8,12 +8,12 @@ import { mySweetAlert, alertMsgType } from "./content-utils";
 function initAlert() {
 	console.log('initAlert');
 	// 监听后台消息
-	chrome.runtime.onMessage.addListener(function(msg : alertMsgType, sender, sendResponse){
-		if(!msg.isAlertMsg) return;
+	chrome.runtime.onMessage.addListener(function (msg: alertMsgType, sender, sendResponse) {
+		if (!msg.isAlertMsg) return;
 		mySweetAlert(msg)
 		// 通知后台正常显示了通知
-		sendResponse({succ: 1});
+		sendResponse({ succ: 1 });
 	});
 }
 
-export {initAlert};
+export { initAlert };

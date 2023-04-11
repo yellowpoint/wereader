@@ -10,72 +10,72 @@ function logAndCopy(data: object, msg = '') {
 }
 
 /* 用于测试 */
-export function getTest(){
+export function getTest() {
 
 	let wereader = new Wereader(window.bookId);
 
-	let logBookmarksJson = async ()=>{
+	let logBookmarksJson = async () => {
 		const data = await wereader.getBookmarks();
 		logAndCopy(data, 'bookmarksJson');
 	}
 
-	let logStorage = ()=>{
+	let logStorage = () => {
 		let storage: {
-			sync: {[key: string]: any},
-			local: {[key: string]: any}
+			sync: { [key: string]: any },
+			local: { [key: string]: any }
 		};
-		chrome.storage.sync.get(function(sync){
+		chrome.storage.sync.get(function (sync) {
 			storage.sync = sync;
-			chrome.storage.local.get(function(local){
+			chrome.storage.local.get(function (local) {
 				storage.local = local;
 				logAndCopy(storage, 'storage');
 			});
 		});
-		
+
 	}
 
-	let logConfig = ()=>{
+	let logConfig = () => {
 		logAndCopy(Config, 'Config');
 	}
 
-	let logGetBookMarks = async ()=>{
+	let logGetBookMarks = async () => {
 		const chapsAndMarks = await getBookMarks();
 		if (chapsAndMarks) logAndCopy(chapsAndMarks, 'chapsAndMarks');
 	}
 
-	let logBestBookMarks = async ()=>{
+	let logBestBookMarks = async () => {
 		const bestBookmarks = await getBestBookMarks();
 		if (bestBookmarks) logAndCopy(bestBookmarks, 'bestBookmarks');
 	}
 
-	let logGetChapters = async ()=>{
+	let logGetChapters = async () => {
 		const chapters = await getChapters();
 		if (chapters) logAndCopy(chapters, 'chapters');
 	}
 
-	let logChapInfosInServer = async ()=>{
+	let logChapInfosInServer = async () => {
 		const data = await wereader.getChapInfos();
 		logAndCopy(data, 'chapInfosInServer');
 	}
 
-	let logFuncGetShelfData = async ()=>{
+	let logFuncGetShelfData = async () => {
 		const shelfData = await getShelfData();
 		logAndCopy(shelfData, 'shelfData');
 	}
 
-	let logFuncWereaderGetShelfData = async ()=>{
+	let logFuncWereaderGetShelfData = async () => {
 		const wereaderShelfData = await wereader.getShelfData();
 		logAndCopy(wereaderShelfData, 'wereaderShelfData');
 	}
 
-	let logReadDetail = async ()=>{
+	let logReadDetail = async () => {
 		const readDetail = await getReadDetail();
 		logAndCopy(readDetail, 'readDetail');
 		// logAndCopy(1609430400, await getReadDetail(1, 3);
 		// console.log(await getReadDetail(0));
 	}
 
-	let logThoughtJson = async ()=>{
+	let logThoughtJson = async () => {
 		const thoughts = await wereader.getThoughts();
 		logAndCopy(thoughts, 'thoughts');
 	}

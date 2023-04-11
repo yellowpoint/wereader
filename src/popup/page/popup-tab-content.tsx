@@ -10,7 +10,7 @@ interface IProps {
  * 标签内容
  */
 export class TabContent extends React.Component<IProps>{
-	render(){
+	render() {
 		const P = this.props;
 		return (
 			<div className="tabContent vertical-menu" data-for={P.for} id={P.id}>
