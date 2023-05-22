@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
 import { SelectActionOptions } from '../../background/modules/bg-vars';
-import { addModevolTags } from './ModevolTags'
+import { addModevolTags, addInjectTags } from './ModevolTags'
 
 function initSelectAction() {
 	console.log('initSelectAction');
@@ -86,7 +86,25 @@ function initSelectAction() {
 				if (container.length) observeToolbar();
 			});
 		}
+		let observeParent2 = function () {
+			console.log('observeParent2');
+			const p = '.renderTargetContainer';
+			const listenFor = '.wr_underline_wrapper';
+			if ($(listenFor).length) return; // 已经存在则不调用
+			$(p)[0].unbindArrive(listenFor);
+			$(p)[0].arrive(listenFor, function (readerToolbarContainer: Element) {
+				console.log('observeParent2 listenFor');
+				// addInjectTags()
+			});
+		}
+
+		setTimeout(() => {
+			// addInjectTags()
+			console.log('addInjectTags');
+		}, 3000)
+
 		observeParent();
+		observeParent2()
 		// 处理切换章节后失效的问题
 		$('.app_content')[0].arrive('.readerChapterContent', () => {
 			observeParent();

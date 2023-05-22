@@ -208,6 +208,33 @@ export async function copyThought(isAll?: boolean) {
 	else copy(res);
 }
 
+
+export async function getThoughtsInAChap() {
+	let chaps = await getChapters();
+	if (chaps === undefined) {
+		alert('获取想法出错');
+		return;
+	}
+	let contents = chaps.reduce((tempContents, aChap) => {
+		//整理格式
+		tempContents.set(aChap.chapterUid, aChap);
+		return tempContents;
+	}, new Map<number, ChapInfoUpdated>());
+	// 找到当前章节 uid
+	let curChapUid = 0;
+	for (const [chapUid, aChap] of contents) {
+		if (aChap.isCurrent) {
+			curChapUid = chapUid;
+			break;
+		}
+	}
+	let thoughts = await getMyThought();
+
+	let chapUid = curChapUid;
+	let thoughtsInAChap = thoughts.get(chapUid)!;
+	return thoughtsInAChap
+}
+
 // 获取当前读书页的 bookId
 export async function setBookId() {
 	return new Promise((res, rej) => {

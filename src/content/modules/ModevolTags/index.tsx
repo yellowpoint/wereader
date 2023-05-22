@@ -81,3 +81,5 @@ export const addModevolTags = () => {
 
 	createRoot($chatDiv[0]).render(<ModevolTags />);
 }
+
+export { addInjectTags } from './InjectTags'

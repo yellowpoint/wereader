@@ -11,6 +11,7 @@ import {
 	copyComment,
 	copyContents,
 	copyThought,
+	getThoughtsInAChap,
 	createMpPage,
 	getShelfData,
 	setBookId,
@@ -44,6 +45,7 @@ export interface PopupApi {
 	copyBookMarks: Function;
 	copyBestBookMarks: Function;
 	copyThought: Function;
+	getThoughtsInAChap: Function;
 	sendMessageToContentScript: Function;
 	shelfForPopup: ShelfForPopupType;
 	getShelfData: Function;
@@ -73,6 +75,7 @@ export function initPopupApi() {
 	window.popupApi.copyBookMarks = copyBookMarks;
 	window.popupApi.copyBestBookMarks = copyBestBookMarks;
 	window.popupApi.copyThought = copyThought;
+	window.popupApi.getThoughtsInAChap = getThoughtsInAChap;
 	window.popupApi.sendMessageToContentScript = sendMessageToContentScript;
 	window.popupApi.shelfForPopup = shelfForPopup;
 	window.popupApi.getShelfData = getShelfData;

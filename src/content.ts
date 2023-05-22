@@ -26,7 +26,7 @@ initKeyBind();
 initMarkedDateGetter();
 initMask();
 initTheme();
-initScrollBar();
+// initScrollBar();
 initSearchNote();
 initNotesMenu();
 initSelectAction();
